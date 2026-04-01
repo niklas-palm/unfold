@@ -95,10 +95,8 @@ Default size: 130x65. Canvas: 900x560.
 ```typescript
 { from: string | AnchorPoint, to: string | AnchorPoint,
   label?: string, labelOffset?: { dx?: number, dy?: number },
-  color?: SemanticColor, dashed?: boolean,
-  via?: { x: number, y: number }[] }
+  color?: SemanticColor, dashed?: boolean }
 ```
-Use `via` waypoints for U-shaped arrows that route around nodes. Each point is a pixel coordinate; the arrow renders as a polyline through all points in order.
 
 ### RegionDef
 ```typescript
