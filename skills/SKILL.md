@@ -1,22 +1,27 @@
 ---
 name: unfold
 description: >
-  Build interactive animated technical presentations with Unfold.
-  Diagram-based slides with nodes, arrows, carry patterns, drilldown modals,
-  and focus expansion. Use when the user wants educational presentations,
-  architecture walkthroughs, or technical diagrams — NOT for bullet-point decks.
-allowed-tools: read_file write_file edit_file run_bash glob_files grep_search
+  Build animated diagram presentations that explain how systems work. Progressive architecture walkthroughs with nodes, arrows, and drilldowns. Use for educational/technical content — NOT bullet-point decks or business reports.
+allowed-tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 
 # Unfold — Presentation Building Skill
 
 Unfold turns TypeScript data files into animated, diagram-based technical presentations. You write structured slide definitions (nodes, arrows, regions, annotations) and the framework renders interactive presentations with smooth animations, drilldown modals, and progressive disclosure. No JSX or React knowledge needed. **All styling is inline — never use Tailwind or CSS classes.**
 
-## When to Use Unfold
+## Before You Start — Confirm with the User
 
-Use Unfold when the user wants a **progressive architecture presentation** — one that starts with one component and reveals the system piece by piece. Think: "How DNS works", "Kubernetes internals", "Transformer architecture".
+Unfold creates **progressive architecture diagrams** — presentations that start with one component and reveal a system piece by piece. They are designed for educational content that explains how systems work and fit together.
 
-Do NOT use Unfold for bullet-point decks, marketing slides, or text-heavy content.
+**Before building, confirm with the user that this is what they want.** Say something like:
+
+> "Unfold creates progressive diagram presentations — animated architecture walkthroughs where I reveal components one by one to explain how a system works. Think 'How DNS works' or 'Kubernetes internals'. Is that the kind of presentation you're looking for?"
+
+**Good fit:** "Explain how DNS resolution works", "Walk through our microservice architecture", "Teach how transformers process text"
+
+**Bad fit:** "Create a quarterly business review", "Make slides for a sales pitch", "Build a financial report deck"
+
+If the user wants bullet-point slides, marketing decks, or text-heavy reports, tell them Unfold is not the right tool and suggest alternatives.
 
 ## Setup
 
@@ -225,6 +230,52 @@ theme: {
 ```
 
 10 semantic colors: `sea`, `warm`, `sage`, `blush`, `mist`, `clay`, `sky`, `stone`, `sand`, `slate`. Each has `{ bg, border, text }`.
+
+## Custom Style Guide
+
+If the user provides a style guide (brand colors, fonts, design preferences), create a `STYLE_GUIDE.md` in the presentation directory that documents the visual identity. Then apply it via the theme override in `presentation.ts`.
+
+If the user describes preferences verbally ("dark theme", "use our brand blue"), translate them directly into theme overrides — no style guide file needed.
+
+**Creating a style guide from user input:**
+
+```markdown
+# Style Guide — [Presentation Name]
+
+## Colors
+- Primary: sea (#2d7d9a) — main components
+- Secondary: sage (#5a7e5e) — supporting services
+- Accent: warm (#a07850) — external systems
+
+## Typography
+- Font: Inter (Google Fonts)
+- Headings: 600 weight
+- Body: 400 weight
+
+## Surfaces
+- Background: #1a1a2e (dark navy)
+- Cards: #16213e
+- Text: #eee
+```
+
+**Applying it:**
+
+```typescript
+export const presentation: PresentationDef = {
+  title: 'My Presentation',
+  theme: {
+    bgPage: '#1a1a2e',
+    bgSurface: '#16213e',
+    text: '#eee',
+    textBody: '#ccc',
+    fontFamily: "'Inter', sans-serif",
+    fontUrl: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+  },
+  slides,
+}
+```
+
+For full theme property reference, read `node_modules/unfoldjs/docs/BRANDING.md`.
 
 ## Workflow
 

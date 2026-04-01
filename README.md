@@ -51,10 +51,19 @@ agent = Agent(
 
 ```
 Build an interactive presentation explaining how DNS resolution works.
-Use the Unfold framework.
 ```
 
-The agent reads the skill, installs the package if needed, studies the examples in `node_modules/unfoldjs/examples/`, and produces a working presentation.
+The agent will confirm that a progressive diagram presentation is the right fit, install the package if needed, study the examples in `node_modules/unfoldjs/examples/`, and build a working presentation.
+
+### 4. Custom styling (optional)
+
+Provide a style guide or describe your preferences:
+
+```
+Use a dark theme with our brand blue (#2d7d9a). Font: Inter.
+```
+
+The agent translates this into theme overrides. For full control, provide a `STYLE_GUIDE.md` with your brand colors, fonts, and design rules — the agent reads it as the source of truth for visual decisions. See [BRANDING.md](docs/BRANDING.md) for all theme properties.
 
 ## How it works
 
