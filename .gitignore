@@ -1,0 +1,25 @@
+node_modules/
+dist/
+dist-site/
+presentation/
+
+# Excluded examples (internal/WIP)
+examples/builder/
+examples/agentcore-identity/
+examples/agentcore-observability/
+examples/kafka/
+examples/claude-conde-on-bedrock/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Local config
+.claude/
+.cursorrules
+.env
