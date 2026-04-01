@@ -169,6 +169,7 @@ export interface CodeSnippetAnnotation {
   x: number; y: number
   code: string
   language?: string
+  w?: number
 }
 
 export interface BraceAnnotation {

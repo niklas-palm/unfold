@@ -1,6 +1,7 @@
 import type { ThemeDef, AnnotationDef, SemanticColor } from '../types'
 import { resolveColor, MONO_FONT } from '../theme'
 import { parseInlineMarkdown } from '../utils/markdown'
+import { Highlight, themes } from 'prism-react-renderer'
 
 interface AnnotationProps {
   annotation: AnnotationDef
@@ -268,13 +269,24 @@ function TextBlock({ a, theme, onDrilldown }: {
 
 function CodeSnippet({ a, theme }: { a: Extract<AnnotationDef, { type: 'code-snippet' }>; theme: ThemeDef }) {
   return (
-    <div style={{ position: 'absolute', left: a.x, top: a.y }}>
-      <pre style={{
-        fontSize: 8, color: theme.textMuted, fontFamily: MONO_FONT,
-        lineHeight: 1.5, textAlign: 'center',
-      }}>
-        {a.code}
-      </pre>
+    <div style={{ position: 'absolute', left: a.x, top: a.y, width: a.w }}>
+      <Highlight theme={themes.nightOwlLight} code={a.code} language={a.language ?? 'text'}>
+        {({ tokens, getLineProps, getTokenProps }) => (
+          <pre style={{
+            margin: 0, background: 'transparent',
+            fontSize: 8, fontFamily: MONO_FONT,
+            lineHeight: 1.5, textAlign: 'left',
+          }}>
+            {tokens.map((line, i) => (
+              <div key={i} {...getLineProps({ line })}>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+        )}
+      </Highlight>
     </div>
   )
 }

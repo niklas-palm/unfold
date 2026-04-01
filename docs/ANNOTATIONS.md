@@ -146,12 +146,18 @@ Place the brace just below a node (`y = node.y + node.h + 4`). Width typically m
 
 ## code-snippet
 
-Inline monospace code display.
+Syntax-highlighted inline code. Uses Prism for coloring when `language` is set.
 
 ```typescript
 {
-  type: 'code-snippet', x: 160, y: 120,
-  code: 'https://bedrock-agentcore.../oauth2/authorize?request_uri=urn:...',
-  language: 'text',  // optional
+  type: 'code-snippet', x: 580, y: 120,
+  code: `const token = await vault.get(key)
+if (!token) throw new Error('expired')`,
+  language: 'typescript',  // optional — defaults to 'text'
+  w: 300,                  // optional — constrains width
 }
 ```
+
+Supported languages: `typescript`, `javascript`, `python`, `bash`, `json`, `html`, `css`, `sql`, `text`.
+
+Use template literals (backtick strings) for multiline code to preserve indentation. For longer code examples with explanations, prefer a code drilldown instead.

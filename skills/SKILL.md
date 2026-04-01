@@ -80,7 +80,7 @@ Nodes inside a region must have `y >= 55`. The region extends `padding` (default
 Annotations that serve the same role across slides must stay at the same (x, y) position.
 
 ### 12. Design the Final Slide First
-Sketch the full-picture slide with all components, arrows, and regions. Then work backwards to plan the narrative.
+Sketch the full-picture slide with all components, arrows, and regions. Then work backwards to plan the narrative. Calculate your rightmost diagram pixel as `max(node.x + node.w) + region_padding + 60`. Annotations must start beyond that x value.
 
 ## Essential Types
 
@@ -152,11 +152,17 @@ All annotations have `type`, `x`, `y`. Place in the right panel (x:580+) in post
 | `chip-list` | Tags in a row. `chips: string[]`, `color` |
 | `pill-group` | Joined pills. `pills: [{ text, icon?, color?, bold? }]`, `joinWith`, `footnote` |
 | `status` | Success/error. `variant: 'error'\|'success'`, `title`, `detail?` |
-| `code-snippet` | Monospace code. `code: string` |
+| `code-snippet` | Syntax-highlighted code. `code: string`, `language?`, `w?` |
 | `url-box` | URL display. `urls: string[]`, `title?`, `color` |
 | `tool-box` | Function name. `icon?`, `name`, `detail?` |
 | `popup-box` | Browser popup. `title`, `detail?`, `w?` |
 | `brace` | Curly brace connector. `w`, `h`, `color?` |
+
+### Annotation Tips
+
+- **Clickable text-blocks** render as bordered cards. Set `w` to match the text content (120–200px), not the full panel width — wide values create oversized buttons.
+- **Region spacing**: non-grouped regions need at least 40px vertical gap between the contained nodes of adjacent regions to avoid overlap.
+- **code-snippet**: use template literals for multiline code. Set `language` for syntax highlighting and `w` to constrain width. For longer examples with explanations, use a code drilldown instead.
 
 ## Drilldowns
 
