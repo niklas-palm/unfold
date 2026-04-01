@@ -28,8 +28,8 @@ curl -o .claude/skills/unfold/SKILL.md https://raw.githubusercontent.com/niklas-
 
 **Cursor / Windsurf:**
 ```bash
-mkdir -p .cursor/skills  # or .windsurf/skills
-curl -o .cursor/skills/unfold.md https://raw.githubusercontent.com/niklas-palm/unfold/main/skills/SKILL.md
+mkdir -p .cursor/skills/unfold  # or .windsurf/skills/unfold
+curl -o .cursor/skills/unfold/SKILL.md https://raw.githubusercontent.com/niklas-palm/unfold/main/skills/SKILL.md
 ```
 
 **Strands SDK:**
