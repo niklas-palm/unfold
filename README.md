@@ -2,21 +2,63 @@
 
 The presentation framework for AI agents.
 
-Unfold turns TypeScript data files into animated, diagram-based technical presentations. Agents write structured slide definitions — nodes, arrows, regions, annotations — and the framework renders them as interactive presentations with smooth animations, drilldown modals, and progressive disclosure. No JSX or React knowledge required.
+Unfold turns TypeScript data files into animated, diagram-based technical presentations. Agents write structured slide definitions — nodes, arrows, regions, annotations — and the framework renders interactive presentations with smooth animations, drilldown modals, and progressive disclosure. No JSX or React knowledge required.
 
-## When to use Unfold
+**When to use Unfold:** progressive architecture presentations where you start with one component and reveal the system piece by piece. Think: "How DNS works", "Kubernetes internals", "Transformer architecture". Not for bullet-point slide decks.
 
-Unfold is designed for **progressive architecture presentations** — the kind where you start with one component and reveal the system piece by piece until the audience understands the whole. Think: "How DNS works", "Kubernetes internals", "Transformer architecture".
+## Setup
 
-It is **not** a bullet-point slide deck tool. If your content is mostly text with occasional diagrams, use a traditional slide framework.
+### 1. Install the package
 
-## Quick Start
+In any React + Vite project:
 
 ```bash
-npm install unfoldjs
+npm install unfoldjs framer-motion prism-react-renderer
 ```
 
-Create a `presentation.ts`:
+### 2. Add the agent skill
+
+The skill teaches your AI agent how to build Unfold presentations. Copy [`skills/SKILL.md`](skills/SKILL.md) into your agent's skill directory:
+
+**Claude Code:**
+```bash
+mkdir -p .claude/skills
+curl -o .claude/skills/unfold.md https://raw.githubusercontent.com/niklas-palm/unfold/main/skills/SKILL.md
+```
+
+**Cursor / Windsurf:**
+```bash
+mkdir -p .cursor/skills  # or .windsurf/skills
+curl -o .cursor/skills/unfold.md https://raw.githubusercontent.com/niklas-palm/unfold/main/skills/SKILL.md
+```
+
+**Strands SDK:**
+
+Point the `AgentSkills` plugin at a directory containing `SKILL.md`:
+
+```python
+from strands import Agent
+from strands.agent.plugins import AgentSkills
+
+agent = Agent(
+    plugins=[AgentSkills(skills="./skills")]
+)
+```
+
+**Any other agent:** Add the contents of [`skills/SKILL.md`](skills/SKILL.md) to your agent's system prompt or tool instructions when the user asks for a presentation.
+
+### 3. Ask your agent to build a presentation
+
+```
+Build an interactive presentation explaining how DNS resolution works.
+Use the Unfold framework.
+```
+
+The agent reads the skill, installs the package if needed, studies the examples in `node_modules/unfoldjs/examples/`, and produces a working presentation.
+
+## How it works
+
+The agent creates TypeScript data files — no JSX:
 
 ```typescript
 import type { PresentationDef, SlideDef } from 'unfoldjs'
@@ -30,24 +72,25 @@ const slide0: SlideDef = {
 
 const slide1: SlideDef = {
   type: 'diagram',
-  heading: 'The browser makes a request',
+  heading: 'The browser asks the OS',
   nodes: [
-    { id: 'browser', label: 'Browser', x: 100, y: 200, w: 160, h: 65, color: 'sea' },
-    { id: 'resolver', label: 'Stub Resolver', sub: 'OS', x: 400, y: 200, w: 160, h: 65, color: 'stone' },
+    { id: 'browser', label: 'Browser', x: 150, y: 200, w: 160, h: 65, color: 'sea' },
+    { id: 'stub', label: 'Stub Resolver', sub: 'OS', x: 500, y: 200, w: 160, h: 65, color: 'stone' },
   ],
   arrows: [
-    { from: 'browser', to: 'resolver', label: 'getaddrinfo()' },
+    { from: 'browser', to: 'stub', label: 'getaddrinfo()' },
   ],
 }
 
+// Each slide builds on the previous — nodes merge by ID, arrows replace
 const slide2 = carry(slide1, {
-  heading: 'The resolver queries upstream',
+  heading: 'The stub queries a recursive resolver',
   nodes: [
-    { id: 'recursive', label: 'Recursive Resolver', sub: '1.1.1.1', x: 250, y: 350, w: 160, h: 65, color: 'sage' },
+    { id: 'recursive', label: 'Recursive Resolver', sub: '1.1.1.1', x: 300, y: 350, w: 160, h: 65, color: 'sage' },
   ],
   arrows: [
-    { from: 'browser', to: 'resolver', label: 'getaddrinfo()' },
-    { from: 'resolver', to: 'recursive', label: 'DNS query' },
+    { from: 'browser', to: 'stub', label: 'getaddrinfo()' },
+    { from: 'stub', to: 'recursive', label: 'DNS query' },
   ],
 })
 
@@ -57,7 +100,7 @@ export const presentation: PresentationDef = {
 }
 ```
 
-Render it in your React app:
+Render with a single component:
 
 ```typescript
 import { PresentationApp } from 'unfoldjs'
@@ -70,17 +113,23 @@ function App() {
 
 ## Examples
 
+The package includes complete reference presentations that agents study before building:
+
 | Example | Description |
 |---------|-------------|
-| `examples/dns/` | How DNS works — 15 slides, 6 drilldowns, custom neobrutalism theme |
+| `examples/dns/` | How DNS works — 15 slides, 6 drilldowns |
 | `examples/k8s/` | Kubernetes architecture |
 | `examples/transformer-architecture/` | Transformer internals |
 
+After installing, these are at `node_modules/unfoldjs/examples/`.
+
 ## Documentation
+
+Detailed reference for agents — also available in `node_modules/unfoldjs/docs/` after install:
 
 | Doc | Purpose |
 |-----|---------|
-| [AGENT_GUIDE.md](docs/AGENT_GUIDE.md) | **Start here.** Layout principles, workflow, verification checklist |
+| [AGENT_GUIDE.md](docs/AGENT_GUIDE.md) | Layout principles, workflow, verification checklist |
 | [SCHEMA.md](docs/SCHEMA.md) | Complete type reference |
 | [BRANDING.md](docs/BRANDING.md) | Fonts, logo, colors, theme customization |
 | [CARRY_PATTERN.md](docs/CARRY_PATTERN.md) | Evolving diagrams with `carry()` |
