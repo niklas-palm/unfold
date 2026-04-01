@@ -22,8 +22,8 @@ The skill teaches your AI agent how to build Unfold presentations. Copy [`skills
 
 **Claude Code:**
 ```bash
-mkdir -p .claude/skills
-curl -o .claude/skills/unfold.md https://raw.githubusercontent.com/niklas-palm/unfold/main/skills/SKILL.md
+mkdir -p .claude/skills/unfold
+curl -o .claude/skills/unfold/SKILL.md https://raw.githubusercontent.com/niklas-palm/unfold/main/skills/SKILL.md
 ```
 
 **Cursor / Windsurf:**
