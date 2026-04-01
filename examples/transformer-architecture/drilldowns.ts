@@ -1,4 +1,4 @@
-import type { DrilldownDef } from 'unfoldjs'
+import type { DrilldownDef } from 'unfold-ai'
 
 // --- Attention Math (content) ---
 

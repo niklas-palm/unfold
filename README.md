@@ -13,7 +13,7 @@ Unfold turns TypeScript data files into animated, diagram-based technical presen
 In any React + Vite project:
 
 ```bash
-npm install unfoldjs framer-motion prism-react-renderer
+npm install unfold-ai framer-motion prism-react-renderer
 ```
 
 ### 2. Add the agent skill
@@ -53,7 +53,7 @@ agent = Agent(
 Build an interactive presentation explaining how DNS resolution works.
 ```
 
-The agent will confirm that a progressive diagram presentation is the right fit, install the package if needed, study the examples in `node_modules/unfoldjs/examples/`, and build a working presentation.
+The agent will confirm that a progressive diagram presentation is the right fit, install the package if needed, study the examples in `node_modules/unfold-ai/examples/`, and build a working presentation.
 
 ### 4. Custom styling (optional)
 
@@ -70,8 +70,8 @@ The agent translates this into theme overrides. For full control, provide a `STY
 The agent creates TypeScript data files — no JSX:
 
 ```typescript
-import type { PresentationDef, SlideDef } from 'unfoldjs'
-import { carry } from 'unfoldjs'
+import type { PresentationDef, SlideDef } from 'unfold-ai'
+import { carry } from 'unfold-ai'
 
 const slide0: SlideDef = {
   type: 'title',
@@ -112,7 +112,7 @@ export const presentation: PresentationDef = {
 Render with a single component:
 
 ```typescript
-import { PresentationApp } from 'unfoldjs'
+import { PresentationApp } from 'unfold-ai'
 import { presentation } from './presentation'
 
 function App() {
@@ -145,7 +145,7 @@ details: API server request flow, etcd consistency model, kubelet reconciliation
 CNI plugin architecture. Save it as REFERENCE.md.
 ```
 
-The included examples each have a `REFERENCE.md` that was generated this way — study them at `node_modules/unfoldjs/examples/dns/REFERENCE.md` for the format.
+The included examples each have a `REFERENCE.md` that was generated this way — study them at `node_modules/unfold-ai/examples/dns/REFERENCE.md` for the format.
 
 ### Then build the presentation from the reference
 
@@ -177,7 +177,7 @@ The package includes complete reference presentations that agents study before b
 | `examples/k8s/` | Kubernetes architecture |
 | `examples/transformer-architecture/` | Transformer internals |
 
-After installing, these are at `node_modules/unfoldjs/examples/`.
+After installing, these are at `node_modules/unfold-ai/examples/`.
 
 ### Browse examples locally
 
@@ -194,7 +194,7 @@ This opens a browser with all three examples — navigate between them and use a
 
 ## Documentation
 
-Detailed reference for agents — also available in `node_modules/unfoldjs/docs/` after install:
+Detailed reference for agents — also available in `node_modules/unfold-ai/docs/` after install:
 
 | Doc | Purpose |
 |-----|---------|

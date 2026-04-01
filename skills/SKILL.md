@@ -26,14 +26,14 @@ If the user wants bullet-point slides, marketing decks, or text-heavy reports, t
 ## Setup
 
 ```bash
-npm install unfoldjs
+npm install unfold-ai
 ```
 
-All imports use the `unfoldjs` package:
+All imports use the `unfold-ai` package:
 
 ```typescript
-import type { PresentationDef, DiagramSlide, SlideDef } from 'unfoldjs'
-import { carry } from 'unfoldjs'
+import type { PresentationDef, DiagramSlide, SlideDef } from 'unfold-ai'
+import { carry } from 'unfold-ai'
 ```
 
 Render with `<PresentationApp presentation={presentation} />` in any React app.
@@ -275,7 +275,7 @@ export const presentation: PresentationDef = {
 }
 ```
 
-For full theme property reference, read `node_modules/unfoldjs/docs/BRANDING.md`.
+For full theme property reference, read `node_modules/unfold-ai/docs/BRANDING.md`.
 
 ## Workflow
 
@@ -305,8 +305,8 @@ After every change, walk the full slide sequence:
 
 ```typescript
 // slides.ts
-import type { DiagramSlide, SlideDef } from 'unfoldjs'
-import { carry } from 'unfoldjs'
+import type { DiagramSlide, SlideDef } from 'unfold-ai'
+import { carry } from 'unfold-ai'
 
 const slide0: SlideDef = {
   type: 'title',
@@ -348,7 +348,7 @@ const slide2 = carry(slide1, {
 export const slides: SlideDef[] = [slide0, slide1, slide2]
 
 // presentation.ts
-import type { PresentationDef } from 'unfoldjs'
+import type { PresentationDef } from 'unfold-ai'
 import { slides } from './slides'
 
 export const presentation: PresentationDef = {
@@ -361,9 +361,9 @@ export const presentation: PresentationDef = {
 
 The npm package includes complete example presentations. Read them to understand real-world patterns:
 
-- `node_modules/unfoldjs/examples/dns/` — 15 slides, 6 drilldowns
-- `node_modules/unfoldjs/examples/k8s/` — Kubernetes architecture
-- `node_modules/unfoldjs/examples/transformer-architecture/` — Transformer internals
+- `node_modules/unfold-ai/examples/dns/` — 15 slides, 6 drilldowns
+- `node_modules/unfold-ai/examples/k8s/` — Kubernetes architecture
+- `node_modules/unfold-ai/examples/transformer-architecture/` — Transformer internals
 
-For the full type reference, read `node_modules/unfoldjs/docs/SCHEMA.md`.
-For arrow routing details, read `node_modules/unfoldjs/docs/ARROWS.md`.
+For the full type reference, read `node_modules/unfold-ai/docs/SCHEMA.md`.
+For arrow routing details, read `node_modules/unfold-ai/docs/ARROWS.md`.

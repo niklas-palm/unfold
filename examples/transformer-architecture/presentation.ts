@@ -1,4 +1,4 @@
-import type { PresentationDef } from 'unfoldjs'
+import type { PresentationDef } from 'unfold-ai'
 import { slides } from './slides'
 import { drilldowns } from './drilldowns'
 

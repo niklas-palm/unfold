@@ -27,7 +27,7 @@ Study these before building:
 ## Working on a Presentation
 
 1. Create your presentation files (slides.ts, drilldowns.ts, presentation.ts)
-2. Import from `unfoldjs`: `import type { SlideDef } from 'unfoldjs'`
+2. Import from `unfold-ai`: `import type { SlideDef } from 'unfold-ai'`
 3. Run `npm run dev` to preview
 
 ## Rules

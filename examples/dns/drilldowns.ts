@@ -1,4 +1,4 @@
-import type { DrilldownDef } from 'unfoldjs'
+import type { DrilldownDef } from 'unfold-ai'
 
 // --- Full Resolution Sequence (sequence) ---
 

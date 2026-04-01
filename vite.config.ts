@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      unfoldjs: path.resolve(__dirname, 'src/framework/index.ts'),
+      'unfold-ai': path.resolve(__dirname, 'src/framework/index.ts'),
     },
   },
   build: {

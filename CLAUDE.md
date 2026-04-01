@@ -22,10 +22,10 @@ Data-driven presentation engine for animated, diagram-based technical presentati
 
 ## Imports
 
-All framework imports use the `unfoldjs` package:
+All framework imports use the `unfold-ai` package:
 
-    import type { PresentationDef, DiagramSlide, SlideDef } from 'unfoldjs'
-    import { carry } from 'unfoldjs'
+    import type { PresentationDef, DiagramSlide, SlideDef } from 'unfold-ai'
+    import { carry } from 'unfold-ai'
 
 ## Key Documentation
 

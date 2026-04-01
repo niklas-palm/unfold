@@ -5,7 +5,7 @@
 ## Import
 
 ```typescript
-import { carry } from 'unfoldjs'
+import { carry } from 'unfold-ai'
 ```
 
 ## Signature

@@ -1,5 +1,5 @@
-import type { DiagramSlide, SlideDef } from 'unfoldjs'
-import { carry } from 'unfoldjs'
+import type { DiagramSlide, SlideDef } from 'unfold-ai'
+import { carry } from 'unfold-ai'
 
 // ============================================================
 // Layout Strategy

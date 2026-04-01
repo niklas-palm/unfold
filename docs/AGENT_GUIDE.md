@@ -291,8 +291,8 @@ presentation.ts    # Top-level PresentationDef
 ## Step 3: Write slides.ts
 
 ```typescript
-import type { DiagramSlide, SlideDef } from 'unfoldjs'
-import { carry } from 'unfoldjs'
+import type { DiagramSlide, SlideDef } from 'unfold-ai'
+import { carry } from 'unfold-ai'
 
 // Start with a title slide
 const slide0: SlideDef = {
@@ -334,7 +334,7 @@ export const slides: SlideDef[] = [slide0, slide1, slide2]
 ## Step 4: Write presentation.ts
 
 ```typescript
-import type { PresentationDef } from 'unfoldjs'
+import type { PresentationDef } from 'unfold-ai'
 import { slides } from './slides'
 
 export const presentation: PresentationDef = {

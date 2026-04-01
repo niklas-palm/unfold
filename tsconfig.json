@@ -18,7 +18,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "unfoldjs": ["src/framework/index.ts"]
+      "unfold-ai": ["src/framework/index.ts"]
     }
   },
   "include": ["src", "presentation", "examples"]
