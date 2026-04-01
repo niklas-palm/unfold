@@ -1,5 +1,9 @@
 # Unfold
 
+[![npm version](https://img.shields.io/npm/v/unfold-ai.svg)](https://www.npmjs.com/package/unfold-ai)
+[![npm downloads](https://img.shields.io/npm/dm/unfold-ai.svg)](https://www.npmjs.com/package/unfold-ai)
+[![license](https://img.shields.io/npm/l/unfold-ai.svg)](https://github.com/niklas-palm/unfold/blob/main/LICENSE)
+
 The presentation framework for AI agents.
 
 Unfold turns TypeScript data files into animated, diagram-based technical presentations. Agents write structured slide definitions — nodes, arrows, regions, annotations — and the framework renders interactive presentations with smooth animations, drilldown modals, and progressive disclosure. No JSX or React knowledge required.
