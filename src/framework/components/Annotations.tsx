@@ -267,10 +267,18 @@ function TextBlock({ a, theme, onDrilldown }: {
 
 // --- Code Snippet ---
 
+function isDark(hex: string): boolean {
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  return (r * 299 + g * 587 + b * 114) / 1000 < 128
+}
+
 function CodeSnippet({ a, theme }: { a: Extract<AnnotationDef, { type: 'code-snippet' }>; theme: ThemeDef }) {
+  const prismTheme = isDark(theme.bgPage) ? themes.nightOwl : themes.nightOwlLight
   return (
     <div style={{ position: 'absolute', left: a.x, top: a.y, width: a.w }}>
-      <Highlight theme={themes.nightOwlLight} code={a.code} language={a.language ?? 'text'}>
+      <Highlight theme={prismTheme} code={a.code} language={a.language ?? 'text'}>
         {({ tokens, getLineProps, getTokenProps }) => (
           <pre style={{
             margin: 0, background: 'transparent',
