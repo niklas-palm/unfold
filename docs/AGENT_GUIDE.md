@@ -446,6 +446,7 @@ Partial modifications are the most common source of broken presentations. A remo
 ## Diagram Layout Tips
 
 - The diagram area is **900px wide x 560px tall**
+- **Canvas capacity:** with compact nodes (h:48) and 80px gaps, you get at most 5 rows: `5×48 + 4×80 = 560`. With regions (add ~52px per region for padding + label), budget accordingly — 3 content rows inside 2 padded regions will fill the canvas.
 - Default node size is **130x65** — good for most labels
 - Use larger nodes (160-200 wide, 65-75 tall) in pre-compact slides for emphasis
 - Compact nodes: **100-155 wide, 48 tall** — drop unnecessary `sub` fields
@@ -474,6 +475,8 @@ regions: [
   { id: 'identity-region', label: 'Identity', contains: ['identity', 'vault'], group: 'ac' },
 ]
 ```
+
+**Region stacking:** When placing multiple regions vertically (grouped or not), the bottom of one region's contained nodes must be at least **50px above** the top of the next region's contained nodes. Each region adds ~28px padding on all sides plus ~24px for the label, so adjacent regions need this gap to avoid overlap. Example: if region A's lowest node bottom is at y:235, region B's topmost node must start at y:285 or below.
 
 You can also position regions manually with `x`, `y`, `w`, `h` if needed.
 
