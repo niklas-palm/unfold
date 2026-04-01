@@ -120,6 +120,53 @@ function App() {
 }
 ```
 
+## Tips for Better Presentations
+
+### Generate a technical reference first
+
+The best presentations come from deep understanding. Before building slides, have your agent research the topic and produce a comprehensive technical reference document. This gives the agent a rich knowledge base to draw from when deciding what to include, what to simplify, and what belongs in drilldowns.
+
+**Example prompt for an existing codebase:**
+
+```
+Explore this codebase and write a detailed technical reference document called REFERENCE.md.
+Cover the architecture, all major components, how they interact, data flows, and key
+design decisions. Write it as a deep technical document — not a summary. Include specifics:
+actual service names, protocols, ports, data formats, error handling patterns.
+I'll use this as the basis for an Unfold presentation.
+```
+
+**Example prompt for a general topic:**
+
+```
+Write a comprehensive technical reference on how Kubernetes works. Cover the control plane,
+worker nodes, pods, services, networking, storage, scheduling, and scaling. Include specific
+details: API server request flow, etcd consistency model, kubelet reconciliation loop,
+CNI plugin architecture. Save it as REFERENCE.md.
+```
+
+The included examples each have a `REFERENCE.md` that was generated this way — study them at `node_modules/unfoldjs/examples/dns/REFERENCE.md` for the format.
+
+### Then build the presentation from the reference
+
+```
+Read REFERENCE.md and build an Unfold presentation that explains this system.
+Focus on the architecture and how components fit together. Start with the entry point
+and progressively reveal the full system. Use drilldowns for deep-dive details.
+```
+
+### For existing systems — let the agent explore first
+
+If you're presenting your own codebase, let the agent explore before writing:
+
+```
+Explore the src/ directory and understand how our payment processing pipeline works.
+Then build an Unfold presentation that walks through the architecture from
+the API endpoint to the payment provider integration.
+```
+
+The agent reads the code, understands the real architecture, and produces accurate diagrams with correct component names, data flows, and interactions.
+
 ## Examples
 
 The package includes complete reference presentations that agents study before building:
