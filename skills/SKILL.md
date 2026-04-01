@@ -23,6 +23,10 @@ Unfold creates **progressive architecture diagrams** — presentations that star
 
 If the user wants bullet-point slides, marketing decks, or text-heavy reports, tell them Unfold is not the right tool and suggest alternatives.
 
+## Required Reading
+
+Before building any presentation, **read `node_modules/unfold-ai/docs/AGENT_GUIDE.md` carefully**. It contains detailed layout principles, spacing rules, arrow routing guidance, and a verification checklist. The rules below are a condensed summary — the agent guide is the authoritative reference.
+
 ## Setup
 
 ```bash
