@@ -179,6 +179,19 @@ The package includes complete reference presentations that agents study before b
 
 After installing, these are at `node_modules/unfoldjs/examples/`.
 
+### Browse examples locally
+
+Clone the repo and run the interactive example browser:
+
+```bash
+git clone https://github.com/niklas-palm/unfold.git
+cd unfold
+npm install
+npm run examples
+```
+
+This opens a browser with all three examples — navigate between them and use arrow keys to walk through each presentation.
+
 ## Documentation
 
 Detailed reference for agents — also available in `node_modules/unfoldjs/docs/` after install:
