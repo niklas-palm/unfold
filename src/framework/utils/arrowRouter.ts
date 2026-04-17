@@ -43,7 +43,7 @@ function pointOnEdge(rect: Rect, side: Side, offset: number): { x: number; y: nu
 // Snap angles: horizontal/vertical get a wide attraction zone,
 // then 30° increments fill in the rest for clean diagonals.
 const SNAP_ANGLES = [0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330]
-const HV_BIAS = 25 // degrees — if within 25° of horizontal/vertical, snap to it
+const HV_BIAS = 12 // degrees — if within 12° of horizontal/vertical, snap to it
 
 function snapAngle(deg: number): number {
   const norm = ((deg % 360) + 360) % 360
